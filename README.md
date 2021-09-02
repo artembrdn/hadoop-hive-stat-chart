@@ -17,5 +17,7 @@
     test2  | 20210902140000  | 555
     test2  | 20210902150000  | 5554
 * After that, you have a file with statistics that you need to upload to the page to display the graph.
+    
     Graph example
+    
   ![Chart example](/img/chart_example.png)
