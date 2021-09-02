@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="robots" content="noindex,nofollow"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<title>Статистика таблиц HIVE </title>
+
+		<link rel="stylesheet" type="text/css" href="./graph.css" />
+		<script type="text/javascript" src="./graph.js"></script>
+		<script type="text/javascript" src="./stat.js"></script>
+		<script type="text/javascript" src="./flot/jquery.js"></script>
+		<script type="text/javascript" src="./flot/jquery.flot.js"></script>
+		<script type="text/javascript" src="./flot/jquery.flot.navigate.js"></script>
+		<script type="text/javascript" src="./flot/jquery.flot.time.js"></script>
+		<script type="text/javascript" src="./jquery.maskedinput.js"></script>
+	</head>
+	<body>
+		<div class='modern_input'></div>
+	
+	
+	</body>
+</html>
+
+	
+<script>
+	let unic_id=0;
+	let display ='';
+	
+	
+	let key_prev='';
+	let start_pos = 0;
+	let end_pos = 0;
+	let source_type='';
+	let source_name='';
+	let result=[];
+	for (let i=0; i < result.length; i++) { 
+		const row = result[i];
+		let key_current = row[0]+'_'+row[1];
+		if ( i == count(result) - 1 || (key_prev != '' && key_current != key_prev)) {
+			if (source_type=='') {
+				source_type=$row[0];
+				source_name=$row[1];
+			}
+			display += drowStat(result, start_pos, end_pos, unic_id, source_type, source_name, date_start, date_end, date_now);
+			unic_id++;
+			start_pos = i;
+		}
+		key_prev = key_current;
+		source_type=row[0];
+		source_name=row[1];
+		end_pos++;
+	}
+</script>
